@@ -24,7 +24,7 @@ func (controller *SignupControllerImpl) Signup(restCtx restlib.RestContext) {
 	var req usermodel.UserCreateReq
 	err := ctx.BindJSON(&req)
 	if err != nil {
-		badReqErr := errorlib.NewInternalServerError("payload-serialization=" + err.Error())
+		badReqErr := errorlib.NewBadReqError("payload-serialization=" + err.Error())
 		badReqErr.SendRestResponse(ctx)
 		return
 	}
